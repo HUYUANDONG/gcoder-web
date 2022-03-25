@@ -9,7 +9,7 @@ var FilterFilterPlugin = module.exports = gcoder.Plugin.extend({
 FilterFilterPlugin.prototype.do = function (tables,config) {
     FilterFilterPlugin.__super__.do();
     let splitChat = config.splitChat || "_";
-    let filterField = ["id","data_status","created_date","created_by","modified_date","modified_by"]
+    let filterField = ["id","created_time","created_by","update_time","update_by"]
     for(let table of tables){
         for(let field of table.fieldArray){
             if(filterField.indexOf(field.fieldName)!=-1){
