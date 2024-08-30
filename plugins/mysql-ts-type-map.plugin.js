@@ -12,6 +12,7 @@ MysqlTsTypeMapFilterPlugin.prototype.do = function (tables,config) {
     let tsTypeMap = {
         "int":"number",
         "bigint":"string",
+        "BIGINT":"string",
         "tinyint":"number",
         "smallint":"number",
         "decimal":"number",
@@ -27,6 +28,7 @@ MysqlTsTypeMapFilterPlugin.prototype.do = function (tables,config) {
     let sqTypeMap = {
         "int":"NUMERIC",
         "bigint":"NUMERIC",
+        "BIGINT":"NUMERIC",
         "tinyint":"NUMERIC",
         "smallint": "NUMERIC",
         "decimal": "NUMERIC",
