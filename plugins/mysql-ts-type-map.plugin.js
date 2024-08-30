@@ -11,9 +11,10 @@ MysqlTsTypeMapFilterPlugin.prototype.do = function (tables,config) {
     let splitChat = config.splitChat || "_";
     let tsTypeMap = {
         "int":"number",
+        "bigint":"string",
         "tinyint":"number",
         "smallint":"number",
-        "bigint":"number",
+        "decimal":"number",
         "int unsigned":"number",
         "varchar":"string",
         "float":"number",
@@ -25,9 +26,10 @@ MysqlTsTypeMapFilterPlugin.prototype.do = function (tables,config) {
     }
     let sqTypeMap = {
         "int":"NUMERIC",
-        "tinyint":"NUMERIC",
-        "smallint":"NUMERIC",
         "bigint":"NUMERIC",
+        "tinyint":"NUMERIC",
+        "smallint": "NUMERIC",
+        "decimal": "NUMERIC",
         "int unsigned":"NUMERIC",
         "varchar":"STRING",
         "float":"NUMERIC",
@@ -38,14 +40,15 @@ MysqlTsTypeMapFilterPlugin.prototype.do = function (tables,config) {
         "char":"STRING",
     }
     for(let table of tables){
-        for(let field of table.fieldArray){
-            field.tsType = tsTypeMap[field.fieldType];
+        for (let field of table.fieldArray) {
+             let fieldType = field.fieldType.toLowerCase()
+            field.tsType = tsTypeMap[fieldType];
             if(!field.tsType){
-                console.log(`${field.fieldType} not map tsType`);
+                console.log(`${fieldType} not map tsType`);
             }
-            field.sqType = sqTypeMap[field.fieldType];
+            field.sqType = sqTypeMap[fieldType];
             if(!field.sqType){
-                console.log(`${field.fieldType} not map sqType`);
+                console.log(`${fieldType} not map sqType`);
             }
         }
     }
