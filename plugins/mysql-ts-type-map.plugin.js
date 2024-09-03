@@ -44,7 +44,11 @@ MysqlTsTypeMapFilterPlugin.prototype.do = function (tables,config) {
     for(let table of tables){
         for (let field of table.fieldArray) {
             let fieldType = field.fieldType.toLowerCase();
-            field.tsType = tsTypeMap[fieldType];
+            if(fieldType.indexOf("decimal")!=-1){
+                field.tsType = tsTypeMap['decimal'];
+            } else {
+                field.tsType = tsTypeMap[fieldType];
+            }
             if(!field.tsType){
                 console.log(`${fieldType} not map tsType`);
             }
