@@ -52,10 +52,10 @@ MysqlTsTypeMapFilterPlugin.prototype.do = function (tables,config) {
             if(!field.tsType){
                 console.log(`${fieldType} not map tsType`);
             }
-            field.sqType = sqTypeMap[fieldType];
-            if(!field.sqType){
-                console.log(`${fieldType} not map sqType`);
-            }
+            // field.sqType = sqTypeMap[fieldType];
+            // if(!field.sqType){
+            //     console.log(`${fieldType} not map sqType`);
+            // }
         }
     }
 };
