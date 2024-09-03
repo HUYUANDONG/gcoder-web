@@ -23,6 +23,7 @@ MysqlTsTypeMapFilterPlugin.prototype.do = function (tables,config) {
         "datetime":"Date",
         "text":"string",
         "char":"string",
+        "timestamp":"string",
     }
     let sqTypeMap = {
         "int":"NUMERIC",
@@ -33,7 +34,8 @@ MysqlTsTypeMapFilterPlugin.prototype.do = function (tables,config) {
         "int unsigned":"NUMERIC",
         "varchar":"STRING",
         "float":"NUMERIC",
-        "double":"NUMERIC",
+        "double": "NUMERIC",
+        "timestamp":"DATE",
         "date":"DATEONLY",
         "datetime":"DATE",
         "text":"STRING",
